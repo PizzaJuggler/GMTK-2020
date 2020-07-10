@@ -10,12 +10,13 @@ extents = Vector2( 6.12965, 9.11019 )
 script = ExtResource( 2 )
 velocity = Vector2( 5, 5 )
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -0.0548515, -1.24514 )
+shape = SubResource( 1 )
+
 [node name="Sprite" type="Sprite" parent="."]
+position = Vector2( -0.187286, -7.81354 )
 texture = ExtResource( 1 )
 hframes = 9
 region_enabled = true
 region_rect = Rect2( 128, 32, 144, 32 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -0.187286, 5.24407 )
-shape = SubResource( 1 )
