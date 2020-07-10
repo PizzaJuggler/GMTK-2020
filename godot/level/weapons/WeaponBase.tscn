@@ -1,12 +1,14 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://level/weapons/WeaponBase.gd" type="Script" id=1]
+[ext_resource path="res://level/weapons/Bullet.tscn" type="PackedScene" id=2]
 
 [node name="WeaponBase" type="Node2D" groups=[
 "weapon",
 ]]
 script = ExtResource( 1 )
 max_rotation = 3.142
+bullet_type = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
 

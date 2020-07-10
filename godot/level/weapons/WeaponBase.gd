@@ -2,6 +2,8 @@ extends Node2D
 
 export var min_rotation : float
 export var max_rotation : float
+export var bullet_speed : float
+export var bullet_type : PackedScene
 
 var min_direction : Vector2
 var max_direction : Vector2
@@ -37,3 +39,8 @@ func _get_closest_direction(move_direction : Vector2) -> Vector2:
         return min_direction
     else:
         return max_direction
+
+func fire(look_direction : Vector2):
+    var bullet = bullet_type.instance()
+    bullet.direction = look_direction
+    return bullet
