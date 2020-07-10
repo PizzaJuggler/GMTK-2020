@@ -1,10 +1,10 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://icon.png" type="Texture" id=1]
+[ext_resource path="res://level/0x72_DungeonTilesetII_v1.3.png" type="Texture" id=1]
 [ext_resource path="res://level/player/Player.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 31.5683, 31.8326 )
+extents = Vector2( 6.12965, 9.11019 )
 
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 2 )
@@ -12,6 +12,10 @@ velocity = Vector2( 5, 5 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
+hframes = 9
+region_enabled = true
+region_rect = Rect2( 128, 32, 144, 32 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -0.187286, 5.24407 )
 shape = SubResource( 1 )

@@ -46,7 +46,7 @@ func handle_mouse(event):
     if event is InputEventMouseButton:
         if event.is_pressed() and !event.is_echo():
             var bullet = current_weapon.fire(look_direction)
-            bullet.position = position + look_direction * 100.0
+            bullet.position = position + look_direction * 25.0
             bullet.velocity += velocity
             parent.add_child(bullet)
        
