@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/bullet.png-9f2285e9820b85fdd3b1755161977fb3.stex"
+path="res://.import/4-Color Weapon Pack.png-84e609c9b149e38bf555ba98c186cff8.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://level/weapons/bullet.png"
-dest_files=[ "res://.import/bullet.png-9f2285e9820b85fdd3b1755161977fb3.stex" ]
+source_file="res://level/weapons/4-Color Weapon Pack.png"
+dest_files=[ "res://.import/4-Color Weapon Pack.png-84e609c9b149e38bf555ba98c186cff8.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

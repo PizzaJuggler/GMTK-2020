@@ -1,19 +1,20 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://level/weapons/bullet.png" type="Texture" id=1]
-[ext_resource path="res://level/weapons/Bullet.gd" type="Script" id=2]
+[ext_resource path="res://level/weapons/arrows.png" type="Texture" id=1]
+[ext_resource path="res://level/weapons/Arrow.gd" type="Script" id=2]
 
-[sub_resource type="CircleShape2D" id=1]
-radius = 2.04423
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 8, 4 )
 
-[node name="Bullet" type="KinematicBody2D" groups=[
+[node name="Arrow" type="KinematicBody2D" groups=[
 "projectile",
 ]]
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
-scale = Vector2( 0.25, 0.25 )
 texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 16, 16 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
