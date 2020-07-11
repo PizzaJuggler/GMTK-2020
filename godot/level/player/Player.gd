@@ -9,6 +9,7 @@ var init_velocity : Vector2
 func _ready():
     init_velocity = Vector2(cos(rotation), sin(rotation)) * speed
     velocity = Vector2.ZERO
+    animated_sprite.play()
 
 var was_left
 func _process(_delta):
