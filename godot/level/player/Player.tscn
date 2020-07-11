@@ -43,15 +43,8 @@ script = ExtResource( 2 )
 position = Vector2( -0.0548515, -1.24514 )
 shape = SubResource( 1 )
 
-[node name="Sprite" type="Sprite" parent="."]
-visible = false
-position = Vector2( -0.187286, -7.81354 )
-texture = ExtResource( 1 )
-hframes = 9
-region_enabled = true
-region_rect = Rect2( 128, 32, 144, 32 )
-
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( -0.0548515, -8.17139 )
 frames = SubResource( 11 )
+frame = 4
 playing = true
