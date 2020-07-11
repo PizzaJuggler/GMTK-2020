@@ -7,7 +7,6 @@
 "weapon",
 ]]
 script = ExtResource( 1 )
-max_rotation = 3.142
 bullet_type = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
@@ -17,10 +16,11 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -4.0
-margin_top = -30.0
-margin_right = 5.0
-margin_bottom = -8.0
+margin_left = 4.39985
+margin_top = 3.17411
+margin_right = 10.3998
+margin_bottom = 19.1741
+rect_rotation = -90.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
