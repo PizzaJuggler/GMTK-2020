@@ -1,7 +1,7 @@
 extends Control
 
 onready var animation_player = $AnimationPlayer
-
+onready var total_coins = $MarginContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/TotalCoins
 var reset_items
 
 func _ready():
@@ -10,6 +10,7 @@ func _ready():
 
 func _on_StatisticsManager_player_died():
     get_tree().paused = true
+    total_coins.text = str(StatisticsManager.coins)
     show()
 
 func show():
