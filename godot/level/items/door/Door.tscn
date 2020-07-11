@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://level/0x72_DungeonTilesetII_v1.3.png" type="Texture" id=1]
+[ext_resource path="res://level/DungeonTileMap.tscn" type="PackedScene" id=2]
+[ext_resource path="res://level/items/door/Door.gd" type="Script" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 16.0702, 9.25058 )
+
+[node name="Door" type="Area2D"]
+script = ExtResource( 3 )
+
+[node name="DungeonTileMap" parent="." instance=ExtResource( 2 )]
+tile_data = PoolIntArray( -65537, 0, 851970, -131072, 0, 851971, -2, 0, 917505, -1, 0, 262145, -65536, 0, 262145, -65535, 0, 917508, 65534, 0, 983041, 65535, 0, 262145, 0, 0, 262145, 1, 0, 983044, 131071, 0, 393220, 65536, 0, 393220 )
+
+[node name="Closed" type="Sprite" parent="."]
+visible = false
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 32, 224, 32, 32 )
+
+[node name="Open" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 80, 224, 32, 32 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 22.9296 )
+shape = SubResource( 1 )
+[connection signal="body_entered" from="." to="." method="_on_Door_body_entered"]
