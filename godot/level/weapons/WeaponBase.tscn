@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://level/weapons/WeaponBase.gd" type="Script" id=1]
 [ext_resource path="res://level/weapons/Arrow.tscn" type="PackedScene" id=2]
 [ext_resource path="res://level/weapons/4-Color Weapon Pack.png" type="Texture" id=3]
+[ext_resource path="res://level/weapons/angle_range_texture_x2.png" type="Texture" id=4]
 
 [node name="WeaponBase" type="Node2D" groups=[
 "weapon",
@@ -10,12 +11,33 @@
 script = ExtResource( 1 )
 bullet_type = ExtResource( 2 )
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="Pivot" type="Position2D" parent="."]
 
-[node name="Bow" type="Sprite" parent="."]
+[node name="Bow" type="Sprite" parent="Pivot"]
 modulate = Color( 0.662745, 1, 0, 1 )
 position = Vector2( 13.017, 0 )
 rotation = 2.35619
 texture = ExtResource( 3 )
 region_enabled = true
 region_rect = Rect2( 64, 64, 16, 16 )
+
+[node name="AngleRange" type="TextureProgress" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -32.0
+margin_top = -32.0
+margin_right = 32.0
+margin_bottom = 32.0
+rect_rotation = 90.0
+rect_pivot_offset = Vector2( 32, 32 )
+max_value = 180.0
+step = 1.0
+value = 80.0
+texture_progress = ExtResource( 4 )
+fill_mode = 8
+tint_progress = Color( 1, 1, 1, 0.176471 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

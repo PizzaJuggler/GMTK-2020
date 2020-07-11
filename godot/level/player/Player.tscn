@@ -26,7 +26,7 @@ region = Rect2( 176, 32, 16, 32 )
 atlas = ExtResource( 1 )
 region = Rect2( 192, 32, 16, 32 )
 
-[sub_resource type="SpriteFrames" id=11]
+[sub_resource type="SpriteFrames" id=7]
 animations = [ {
 "frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ) ],
 "loop": true,
@@ -45,6 +45,6 @@ shape = SubResource( 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( -0.0548515, -8.17139 )
-frames = SubResource( 11 )
+frames = SubResource( 7 )
 frame = 4
 playing = true
