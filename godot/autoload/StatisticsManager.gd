@@ -1,7 +1,8 @@
 extends Node
 
-signal added_coin(coin)
-signal added_health(health)
+signal coins_changed(coin)
+signal health_changed(health)
+signal player_died()
 
 onready var hud = find_node("HUD")
 
@@ -11,13 +12,13 @@ var health = 2.0
 var coins = 0
 
 func _ready():
-    pass
+    add_to_group("reset")
 
 func add_collectible(key, value):
     match key:
         "coin":
             coins += value
-            emit_signal("added_coin", coins)
+            emit_signal("coins_changed", coins)
         "health_potion":
             change_health(value)
 
@@ -26,4 +27,12 @@ func apply_damage(damage : float):
 
 func change_health(value):
     health = clamp(health + value, 0, max_health)
-    emit_signal("added_health", health)
+    emit_signal("health_changed", health)
+    if health == 0:
+        emit_signal("player_died")
+
+func reset():
+    health = max_health
+    coins = 0
+    emit_signal("health_changed", health)
+    emit_signal("coins_changed", coins)

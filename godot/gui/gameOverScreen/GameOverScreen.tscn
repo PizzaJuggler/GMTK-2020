@@ -36,6 +36,20 @@ tracks/1/keys = {
 "update": 1,
 "values": [ false ]
 }
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "resume"
+} ]
+}
 
 [sub_resource type="Animation" id=2]
 resource_name = "show"
@@ -66,6 +80,8 @@ tracks/1/keys = {
 }
 
 [node name="GameOverScreen" type="Control"]
+visible = false
+modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 3 )
@@ -197,14 +213,14 @@ margin_top = 91.0
 margin_right = 218.0
 margin_bottom = 123.0
 
-[node name="RestartButton2" type="TextureButton" parent="MarginContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/CenterContainer2"]
+[node name="QuitButton" type="TextureButton" parent="MarginContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/CenterContainer2"]
 margin_left = 61.0
 margin_right = 157.0
 margin_bottom = 32.0
 size_flags_horizontal = 0
 texture_normal = ExtResource( 4 )
 
-[node name="QuitLabel" type="Label" parent="MarginContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/CenterContainer2/RestartButton2"]
+[node name="QuitLabel" type="Label" parent="MarginContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/CenterContainer2/QuitButton"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_fonts/font = ExtResource( 2 )
@@ -218,3 +234,5 @@ __meta__ = {
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/hide = SubResource( 3 )
 anims/show = SubResource( 2 )
+[connection signal="pressed" from="MarginContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/CenterContainer/RestartButton" to="." method="_on_RestartButton_pressed"]
+[connection signal="pressed" from="MarginContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/CenterContainer2/QuitButton" to="." method="_on_QuitButton_pressed"]
