@@ -1,7 +1,16 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://gui/HUD/HUD.gd" type="Script" id=1]
 [ext_resource path="res://gui/HUD/Heart.tscn" type="PackedScene" id=2]
+[ext_resource path="res://level/0x72_DungeonTilesetII_v1.3.png" type="Texture" id=3]
+[ext_resource path="res://fonts/Kenney Pixel.ttf" type="DynamicFontData" id=4]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 3 )
+region = Rect2( 288, 272, 8, 8 )
+
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 4 )
 
 [node name="HUD" type="Control"]
 anchor_right = 1.0
@@ -20,24 +29,47 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HeartContainer" type="HBoxContainer" parent="MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 margin_left = 15.0
 margin_top = 15.0
-margin_right = 76.0
-margin_bottom = 40.0
+margin_right = 71.0
+margin_bottom = 49.0
+
+[node name="HeartContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+margin_right = 56.0
+margin_bottom = 16.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Heart" parent="MarginContainer/HeartContainer" instance=ExtResource( 2 )]
-margin_bottom = 25.0
+[node name="Heart" parent="MarginContainer/VBoxContainer/HeartContainer" instance=ExtResource( 2 )]
 
-[node name="Heart2" parent="MarginContainer/HeartContainer" instance=ExtResource( 2 )]
+[node name="Heart2" parent="MarginContainer/VBoxContainer/HeartContainer" instance=ExtResource( 2 )]
 margin_left = 20.0
 margin_right = 36.0
-margin_bottom = 25.0
 
-[node name="Heart3" parent="MarginContainer/HeartContainer" instance=ExtResource( 2 )]
+[node name="Heart3" parent="MarginContainer/VBoxContainer/HeartContainer" instance=ExtResource( 2 )]
 margin_left = 40.0
 margin_right = 56.0
-margin_bottom = 25.0
+
+[node name="CoinsContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+margin_top = 20.0
+margin_right = 56.0
+margin_bottom = 32.0
+
+[node name="Coin" type="TextureRect" parent="MarginContainer/VBoxContainer/CoinsContainer"]
+margin_right = 8.0
+margin_bottom = 12.0
+texture = SubResource( 1 )
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CoinLabel" type="Label" parent="MarginContainer/VBoxContainer/CoinsContainer"]
+margin_left = 12.0
+margin_right = 18.0
+margin_bottom = 12.0
+custom_fonts/font = SubResource( 2 )
+text = "0"
+align = 1
