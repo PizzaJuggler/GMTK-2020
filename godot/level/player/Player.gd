@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+class_name Player
+
 onready var animated_sprite = $AnimatedSprite
 
 export var speed := 100.0

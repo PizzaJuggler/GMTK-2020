@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://level/items/collectibles/Collectible.tscn" type="PackedScene" id=1]
+[ext_resource path="res://level/0x72_DungeonTilesetII_v1.3.png" type="Texture" id=2]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 2 )
+region = Rect2( 288, 272, 32, 8 )
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 8.0
+
+[node name="Coin" instance=ExtResource( 1 )]
+key = "coin"
+value = 1.0
+
+[node name="Sprite" parent="." index="0"]
+texture = SubResource( 1 )
+hframes = 4
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource( 2 )
