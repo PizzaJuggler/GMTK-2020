@@ -1,11 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://level/player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://level/weapons/WeaponBase.tscn" type="PackedScene" id=2]
 [ext_resource path="res://level/DungeonTileMap.tscn" type="PackedScene" id=3]
 [ext_resource path="res://level/items/door/Door.tscn" type="PackedScene" id=4]
 [ext_resource path="res://gui/HUD/HUD.tscn" type="PackedScene" id=5]
-[ext_resource path="res://level/enemies/enemy.gd" type="Script" id=6]
 [ext_resource path="res://level/enemies/enemy.tscn" type="PackedScene" id=7]
 
 [node name="Debug" type="Node2D"]
@@ -30,8 +29,5 @@ position = Vector2( 272, 64 )
 
 [node name="HUD" parent="." instance=ExtResource( 5 )]
 
-[node name="KinematicBody2D" parent="." instance=ExtResource( 7 )]
-position = Vector2( 299.622, 107.15 )
-script = ExtResource( 6 )
-regen = 1.5
-angle = -90.0
+[node name="Enemy" parent="." instance=ExtResource( 7 )]
+position = Vector2( 368, 104 )
