@@ -1,0 +1,43 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://gui/HUD/HUD.gd" type="Script" id=1]
+[ext_resource path="res://gui/HUD/Heart.tscn" type="PackedScene" id=2]
+
+[node name="HUD" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+custom_constants/margin_top = 15
+custom_constants/margin_left = 15
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HeartContainer" type="HBoxContainer" parent="MarginContainer"]
+margin_left = 15.0
+margin_top = 15.0
+margin_right = 76.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Heart" parent="MarginContainer/HeartContainer" instance=ExtResource( 2 )]
+margin_bottom = 25.0
+
+[node name="Heart2" parent="MarginContainer/HeartContainer" instance=ExtResource( 2 )]
+margin_left = 20.0
+margin_right = 36.0
+margin_bottom = 25.0
+
+[node name="Heart3" parent="MarginContainer/HeartContainer" instance=ExtResource( 2 )]
+margin_left = 40.0
+margin_right = 56.0
+margin_bottom = 25.0
