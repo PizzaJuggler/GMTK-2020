@@ -1,26 +1,28 @@
 extends KinematicBody2D
 
-export var speed : Vector2
+export var speed := 100.0
+var velocity : Vector2
+var init_velocity : Vector2
 
 var parent
 func _ready():
 	parent = get_parent()
-	
-func change_direction(to : Vector2):
-	speed = to * speed.length()
+	init_velocity = Vector2(cos(rotation), sin(rotation)) * speed
+	velocity = Vector2.ZERO
 
 var was_left
 func _process(_delta):
-	var is_left = rotation_degrees < -90 || rotation_degrees > 90
-	if (is_left && !was_left) || (!is_left && was_left):
-		scale.x = -1
-	was_left = is_left
+	rotation = init_velocity.angle()
 
 func _physics_process(delta):
-	var collision_info = move_and_collide(speed * delta)
+	var collision_info = move_and_collide(velocity * delta)
 	if collision_info:
-		speed = speed.bounce(collision_info.normal)
-
+		velocity = velocity.bounce(collision_info.normal)
+		init_velocity = velocity
+	
 func _unhandled_input(event):
 	if event.is_action_pressed("move"):
-		return
+		velocity = init_velocity
+	elif event.is_action_released("move"):
+		velocity = Vector2.ZERO
+		
