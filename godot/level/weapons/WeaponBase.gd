@@ -31,8 +31,8 @@ func _unhandled_input(event):
         if cooldown <= 0:
             cooldown = firing_rate
             var bullet = bullet_type.instance()
-            bullet.direction = Vector2(cos(bow_pivot.rotation), sin(bow_pivot.rotation))
-            if rotation_degrees < -90 || rotation_degrees > 90:
-                bullet.direction *= -1
+            bullet.direction = Vector2(
+                    cos(bow_pivot.rotation + rotation), 
+                    sin(bow_pivot.rotation + rotation))
             bullet.position = global_position + bullet.direction * 18
             get_tree().get_root().add_child(bullet)

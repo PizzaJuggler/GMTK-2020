@@ -32,6 +32,7 @@ margin_right = 32.0
 margin_bottom = 32.0
 rect_rotation = 90.0
 rect_pivot_offset = Vector2( 32, 32 )
+mouse_filter = 2
 max_value = 180.0
 step = 1.0
 value = 80.0

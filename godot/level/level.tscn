@@ -15,7 +15,7 @@ position = Vector2( 240, 104 )
 
 [node name="WeaponBase" parent="Player" instance=ExtResource( 2 )]
 position = Vector2( 7.15256e-07, -1.43051e-06 )
-rotation_limit = 45.0
+rotation_limit = 100.0
 firing_rate = 0.2
 
 [node name="walls" parent="." instance=ExtResource( 3 )]
