@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+class_name Enemy
+
 onready var animated_sprite = $AnimatedSprite
 
 export var max_hp := 10.0

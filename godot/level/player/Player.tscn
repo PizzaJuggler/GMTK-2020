@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://level/0x72_DungeonTilesetII_v1.3.png" type="Texture" id=1]
 [ext_resource path="res://level/player/Player.gd" type="Script" id=2]
@@ -34,6 +34,22 @@ animations = [ {
 "speed": 10.0
 } ]
 
+[sub_resource type="Animation" id=8]
+resource_name = "hit"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.196078 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.196078 ), Color( 1, 1, 1, 1 ) ]
+}
+
 [node name="Player" type="KinematicBody2D"]
 z_index = 1
 z_as_relative = false
@@ -47,3 +63,11 @@ shape = SubResource( 1 )
 position = Vector2( -0.0548515, -8.17139 )
 frames = SubResource( 7 )
 frame = 1
+
+[node name="KnockBackTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/hit = SubResource( 8 )
+[connection signal="timeout" from="KnockBackTimer" to="." method="_on_KnockBackTimer_timeout"]
