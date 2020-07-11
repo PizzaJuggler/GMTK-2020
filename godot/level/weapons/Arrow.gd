@@ -23,6 +23,9 @@ func _physics_process(delta):
             queue_free()
         elif collision_info.collider.name == "Player":
             queue_free()
+        elif collision_info.collider.is_in_group("enemy"):
+            collision_info.collider.damage(damage)
+            queue_free()
         velocity = velocity.bounce(collision_info.normal)
     update_sprite_rotation()
 

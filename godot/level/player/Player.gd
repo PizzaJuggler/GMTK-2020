@@ -20,7 +20,6 @@ func _ready():
     state = States.WALKING
 
 func _process(delta):
-    pass
     if state == States.KNOCKBACK:
         velocity -= velocity * delta * 10.0
             
@@ -72,5 +71,6 @@ func _unhandled_input(event):
 
 
 func _on_KnockBackTimer_timeout():
+    velocity = Vector2.ZERO
     state = States.WALKING
     init_velocity = init_velocity.rotated(PI / 2)

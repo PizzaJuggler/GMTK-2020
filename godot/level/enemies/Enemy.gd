@@ -52,10 +52,13 @@ func handle_collision(collision_info):
             hp -= collision_info.collider.damage
             collision_info.collider.queue_free()
         return
-    if not collision_info.collider is TileMap:
-        return
-    velocity = velocity.bounce(collision_info.normal)
-    init_velocity = velocity
+    if collision_info.collider is TileMap:
+        velocity = velocity.bounce(collision_info.normal)
+        init_velocity = velocity
+        
+    if collision_info.collider.is_in_group("enemy"):
+        velocity = velocity.bounce(collision_info.normal)
+        init_velocity = velocity
     update_rotation()
 
 func update_rotation():
@@ -63,3 +66,6 @@ func update_rotation():
         animated_sprite.flip_h = false
     else:
         animated_sprite.flip_h = true
+        
+func damage(value):
+    hp -= value
