@@ -22,11 +22,18 @@ func update_rotation():
 
 func _physics_process(delta):
     var collision_info = move_and_collide(velocity * delta)
-    if collision_info:
-        velocity = velocity.bounce(collision_info.normal)
-        init_velocity = velocity
-        update_rotation()
-    
+    handle_collision(collision_info)
+
+func handle_collision(collision_info): 
+    if collision_info == null:
+        return
+    if not collision_info.collider is TileMap:
+        return
+        
+    velocity = velocity.bounce(collision_info.normal)
+    init_velocity = velocity
+    update_rotation()
+        
 func _unhandled_input(event):
     if event.is_action_pressed("move"):
         velocity = init_velocity
