@@ -4,6 +4,7 @@ onready var sprite = $Sprite
 onready var collision_shape = $CollisionShape2D
 
 var direction setget set_direction
+var damage setget set_damage
 var velocity
 var speed = 200
 
@@ -11,6 +12,9 @@ func set_direction(value):
     direction = value
     velocity = speed * direction
     update_sprite_rotation()
+
+func set_damage(value):
+    damage = value
 
 func _physics_process(delta):
     var collision_info = move_and_collide(velocity * delta)

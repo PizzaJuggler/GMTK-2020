@@ -4,6 +4,7 @@ export var rotation_limit : float
 export var bullet_speed : float
 export var bullet_type : PackedScene
 export var firing_rate : float
+export var damage : float
 
 onready var bow_pivot = $Pivot
 onready var angle_range = $AngleRange
@@ -35,4 +36,5 @@ func _unhandled_input(event):
                     cos(bow_pivot.rotation + rotation), 
                     sin(bow_pivot.rotation + rotation))
             bullet.position = global_position + bullet.direction * 18
+            bullet.damage = damage
             get_tree().get_root().add_child(bullet)

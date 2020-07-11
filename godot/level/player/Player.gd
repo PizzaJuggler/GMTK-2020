@@ -11,7 +11,6 @@ func _ready():
     velocity = Vector2.ZERO
     animated_sprite.play()
 
-var was_left
 func _process(_delta):
     pass
     
@@ -25,7 +24,7 @@ func _physics_process(delta):
     var collision_info = move_and_collide(velocity * delta)
     handle_collision(collision_info)
 
-func handle_collision(collision_info): 
+func handle_collision(collision_info):
     if collision_info == null:
         return
     if not collision_info.collider is TileMap:

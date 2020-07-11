@@ -4,7 +4,7 @@
 [ext_resource path="res://level/weapons/Arrow.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 8, 4 )
+extents = Vector2( 1.96141, 4.10354 )
 
 [node name="Arrow" type="KinematicBody2D" groups=[
 "projectile",
@@ -17,6 +17,7 @@ region_enabled = true
 region_rect = Rect2( 0, 0, 16, 16 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 5.95275, 0.0992126 )
 shape = SubResource( 1 )
 
 [node name="LifeTime" type="Timer" parent="."]
