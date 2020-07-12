@@ -12,11 +12,15 @@ extents = Vector2( 16.0702, 9.25058 )
 extents = Vector2( 32, 16 )
 
 [node name="Door" type="Area2D"]
+position = Vector2( 0, -16 )
 script = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 22.9296 )
 shape = SubResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="DungeonTileMap" parent="." instance=ExtResource( 2 )]
 tile_data = PoolIntArray( -65537, 0, 851970, -131072, 0, 851971, -2, 0, 917505, -65535, 0, 917508, 65534, 0, 983041, 0, 0, 0, 1, 0, 983044, 131071, 0, 1048578, 65536, 0, 1048579 )
@@ -25,16 +29,28 @@ tile_data = PoolIntArray( -65537, 0, 851970, -131072, 0, 851971, -2, 0, 917505, 
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 80, 224, 32, 32 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Closed" type="Sprite" parent="."]
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 32, 224, 32, 32 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Closed"]
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Closed/StaticBody2D"]
 shape = SubResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
