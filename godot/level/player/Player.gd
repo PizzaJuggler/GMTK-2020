@@ -91,6 +91,9 @@ func _unhandled_input(event):
 func _on_KnockBackTimer_timeout():
     velocity = Vector2.ZERO
     state = States.WALKING
+    rotate_player()
+    
+func rotate_player():
     init_velocity = init_velocity.rotated(PI / 2)
 
 func play_random_footstep():

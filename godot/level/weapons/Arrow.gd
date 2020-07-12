@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+class_name Arrow
+
 onready var sprite = $Sprite
 onready var collision_shape = $CollisionShape2D
 
@@ -22,11 +24,15 @@ func _physics_process(delta):
     if collision_info:
         if collision_info.collider.is_in_group("projectile"):
             visible = false
+            collision_shape.disabled = true
         elif collision_info.collider.name == "Player":
             visible = false
+            collision_shape.disabled = true
+            collision_info.collider.rotate_player()
         elif collision_info.collider.is_in_group("enemy"):
             collision_info.collider.damage(damage)
             visible = false
+            collision_shape.disabled = true
         velocity = velocity.bounce(collision_info.normal)
         $AudioStreamPlayer2D.play(.2)
     update_sprite_rotation()
