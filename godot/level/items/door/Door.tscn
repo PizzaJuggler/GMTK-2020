@@ -9,7 +9,7 @@
 extents = Vector2( 16.0702, 9.25058 )
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 16.1384, 15.3861 )
+extents = Vector2( 32, 16 )
 
 [node name="Door" type="Area2D"]
 script = ExtResource( 3 )
@@ -19,7 +19,7 @@ position = Vector2( 0, 22.9296 )
 shape = SubResource( 1 )
 
 [node name="DungeonTileMap" parent="." instance=ExtResource( 2 )]
-tile_data = PoolIntArray( -65537, 0, 851970, -131072, 0, 851971, -2, 0, 917505, -65535, 0, 917508, 65534, 0, 983041, 1, 0, 983044, 131071, 0, 1048578, 65536, 0, 1048579 )
+tile_data = PoolIntArray( -65537, 0, 851970, -131072, 0, 851971, -2, 0, 917505, -65535, 0, 917508, 65534, 0, 983041, 0, 0, 0, 1, 0, 983044, 131071, 0, 1048578, 65536, 0, 1048579 )
 
 [node name="Open" type="Sprite" parent="."]
 texture = ExtResource( 1 )
