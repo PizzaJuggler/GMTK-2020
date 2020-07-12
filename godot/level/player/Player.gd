@@ -55,7 +55,7 @@ func handle_collision(collision_info):
         return
     if collision_info.collider is TileMap:
         velocity = velocity.bounce(collision_info.normal)
-        init_velocity = velocity
+        
     elif collision_info.collider is Enemy:
         collide_with_enemy(collision_info.collider)
     
@@ -69,7 +69,7 @@ func collide_with_enemy(enemy):
     # push the player backwards
     var direction = (enemy.position - position).normalized()
     # change player direction
-    velocity = - direction * init_velocity.length() * 2.5
+    velocity = - direction * init_velocity.length() * enemy.velocity.length() / 10.0
     
     knockback_timer.start()
     animation_player.play("hit")
