@@ -10,6 +10,7 @@ var max_health = 5.0
 
 var health = 5.0 
 var coins = 0
+var seed_random = ""
 
 func _ready():
     add_to_group("reset")

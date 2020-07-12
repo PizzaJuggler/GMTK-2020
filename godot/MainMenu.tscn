@@ -59,6 +59,9 @@ margin_right = 416.0
 margin_bottom = 137.0
 custom_fonts/font = SubResource( 3 )
 max_length = 100
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Play" type="TextureButton" parent="."]
 margin_left = 128.0
@@ -98,5 +101,6 @@ valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+[connection signal="text_changed" from="LineEdit" to="." method="_on_LineEdit_text_changed"]
 [connection signal="pressed" from="Play" to="." method="_on_Play_pressed"]
 [connection signal="pressed" from="Quit" to="." method="_on_Quit_pressed"]

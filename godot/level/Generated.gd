@@ -34,6 +34,7 @@ func _ready():
     generate()
 
 func generate():
+    rng_seed = StatisticsManager.seed_random
     if rng_seed != "":
         rng.seed = rng_seed.hash()
     else:
