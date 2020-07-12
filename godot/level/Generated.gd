@@ -4,6 +4,14 @@ onready var tilemap = $TileMap
 onready var player = $Player
 export var rng_seed : String
 export var level_num : int
+
+var door = preload("res://level/items/door/Door.tscn")
+var enemy = preload("res://level/enemies/enemy.tscn")
+var coin = preload("res://level/items/collectibles/Coin.tscn")
+var potion = preload("res://level/items/collectibles/Potion.tscn")
+var collectables
+var enemies
+
 var rng = RandomNumberGenerator.new()
 
 var rooms : int
@@ -20,6 +28,11 @@ var dungeon = {}
 var rooms_list = []
 
 func _ready():
+    collectables = [coin, potion]
+    enemies = [enemy]
+    generate()
+
+func generate():
     if rng_seed != "":
         rng.seed = rng_seed.hash()
     else:
@@ -36,11 +49,12 @@ func _ready():
             dungeon[x][y] = Vector2.ZERO
 
     create_rooms()
+    add_items_to_rooms(collectables)
+    add_items_to_rooms(enemies)
     connect_rooms()
     add_walls()
     populate_tilemap()
-    place_player_in_room(rooms_list)
-    
+    place_player_in_room()
 
 func create_rooms():
     for _room in range(rooms):
@@ -102,8 +116,7 @@ func create_path_between_rooms(a, b):
         dx = 1
     else:
         dx = -1
-    print(a) 
-    print(b) 
+
     while not is_above_or_below_room(coord, b):
         add_path_piece(coord, true, 5)
         coord.x += dx
@@ -130,9 +143,38 @@ func is_left_or_right_room(coord, room):
     return room.y < coord.y and coord.y < room.y + room.dy
 
 
-func place_player_in_room(rooms_list):
+func place_player_in_room():
     var lowest_room = rooms_list[0]
     
     var room_position = tilemap.map_to_world(Vector2(lowest_room.x, lowest_room.y))
     var room_center = room_position + .5 * Vector2(lowest_room.dx, lowest_room.dy) * tilemap.cell_size
     player.position = room_center
+    
+func add_items_to_rooms(item_list):
+    var occupied_cells = []
+    var room
+    var coord
+    var nr_items = 2
+    var item 
+    var instance
+    
+    for i in range(1, rooms):
+        room = rooms_list[i]
+        for j in range(nr_items):
+            coord = get_random_coord_in_room(room)
+            item = item_list[randi() % item_list.size()]
+            instance = item.instance()
+            while coord in occupied_cells:
+                coord = get_random_coord_in_room(room)   
+            instance.position = tilemap.map_to_world(Vector2(coord.x, coord.y))  
+            add_child(instance)
+            
+
+
+
+func get_random_coord_in_room(room):
+    var coord = {
+        "x" : room.x + randi() % room.dx,
+        "y" : room.y + randi() % room.dy
+       }
+    return coord
