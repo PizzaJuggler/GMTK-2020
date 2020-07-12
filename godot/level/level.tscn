@@ -15,8 +15,6 @@
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="HUD" parent="UI" instance=ExtResource( 5 )]
-margin_left = -16.0
-margin_right = -16.0
 mouse_filter = 2
 
 [node name="GameOverScreen" parent="UI" instance=ExtResource( 6 )]
