@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://level/0x72_DungeonTilesetII_v1.3.png" type="Texture" id=1]
 [ext_resource path="res://level/DungeonTileMap.tscn" type="PackedScene" id=2]
 [ext_resource path="res://level/items/door/Door.gd" type="Script" id=3]
+[ext_resource path="res://sound/door2.wav" type="AudioStream" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 16.0702, 9.25058 )
@@ -34,4 +35,7 @@ region_rect = Rect2( 32, 224, 32, 32 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Closed/StaticBody2D"]
 shape = SubResource( 2 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
 [connection signal="body_entered" from="." to="." method="_on_Door_body_entered"]

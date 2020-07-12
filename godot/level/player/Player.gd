@@ -5,6 +5,7 @@ class_name Player
 onready var animated_sprite = $AnimatedSprite
 onready var knockback_timer = $KnockBackTimer
 onready var animation_player = $AnimationPlayer
+onready var footstep_audioplayer = $FootStep
 
 export var speed := 100.0
 var velocity : Vector2
@@ -13,11 +14,26 @@ var init_velocity : Vector2
 enum States {KNOCKBACK, WALKING}
 var state
 
+
+var footsteps = [
+    preload("res://sound/footsteps/footstep00.wav"),
+    preload("res://sound/footsteps/footstep01.wav"),
+    preload("res://sound/footsteps/footstep02.wav"),
+    preload("res://sound/footsteps/footstep03.wav"),
+    preload("res://sound/footsteps/footstep04.wav"),
+    preload("res://sound/footsteps/footstep05.wav"),
+    preload("res://sound/footsteps/footstep06.wav"),
+    preload("res://sound/footsteps/footstep07.wav"),
+    preload("res://sound/footsteps/footstep08.wav"),
+    preload("res://sound/footsteps/footstep09.wav"),
+]
+
 func _ready():
     init_velocity = Vector2(cos(rotation), sin(rotation)) * speed
     velocity = Vector2.ZERO
     animated_sprite.play()
     state = States.WALKING
+    
 
 func _process(delta):
     if state == States.KNOCKBACK:
@@ -74,3 +90,17 @@ func _on_KnockBackTimer_timeout():
     velocity = Vector2.ZERO
     state = States.WALKING
     init_velocity = init_velocity.rotated(PI / 2)
+
+func play_random_footstep():
+    if state != States.WALKING:
+        return
+        
+    if velocity == Vector2.ZERO:
+        return
+    
+    footstep_audioplayer.stream = footsteps[randi() % footsteps.size()]
+    footstep_audioplayer.play()
+
+
+func _on_FootStepTimer_timeout():
+    play_random_footstep()

@@ -38,3 +38,4 @@ func _unhandled_input(event):
             bullet.position = global_position + bullet.direction * 18
             bullet.damage = damage
             get_tree().get_root().add_child(bullet)
+            $AudioStreamPlayer.play(.1)

@@ -70,4 +70,12 @@ one_shot = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/hit = SubResource( 8 )
+
+[node name="FootStep" type="AudioStreamPlayer" parent="."]
+volume_db = -6.0
+
+[node name="FootStepTimer" type="Timer" parent="."]
+wait_time = 0.3
+autostart = true
 [connection signal="timeout" from="KnockBackTimer" to="." method="_on_KnockBackTimer_timeout"]
+[connection signal="timeout" from="FootStepTimer" to="." method="_on_FootStepTimer_timeout"]

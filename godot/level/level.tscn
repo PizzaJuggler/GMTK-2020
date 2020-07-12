@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://level/player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://level/weapons/WeaponBase.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://gui/HUD/HUD.tscn" type="PackedScene" id=5]
 [ext_resource path="res://gui/gameOverScreen/GameOverScreen.tscn" type="PackedScene" id=6]
 [ext_resource path="res://level/enemies/enemy.tscn" type="PackedScene" id=7]
+[ext_resource path="res://level/items/collectibles/Coin.tscn" type="PackedScene" id=8]
 
 [node name="Debug" type="Node2D"]
 
@@ -46,3 +47,6 @@ speed = 50.0
 position = Vector2( 112, 104 )
 speed = 200.0
 angle = 45.0
+
+[node name="Coin" parent="." instance=ExtResource( 8 )]
+position = Vector2( 208, 103.802 )

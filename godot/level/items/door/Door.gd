@@ -12,6 +12,7 @@ func open_door():
     open_sprite.visible = true
     closed_sprite.visible = false
     emit_signal("door_opened")
+    $AudioStreamPlayer.play()
 
 func close_door():
     open_sprite.visible = false

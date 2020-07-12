@@ -10,4 +10,10 @@ func _on_Collectible_body_entered(body):
     if body is Player and not is_taken:
         is_taken = true
         StatisticsManager.add_collectible(key, value)
-        queue_free()
+        visible = false
+        $AudioStreamPlayer.play()
+        
+
+
+func _on_AudioStreamPlayer_finished():
+    queue_free()

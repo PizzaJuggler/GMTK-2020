@@ -18,15 +18,17 @@ func set_damage(value):
 
 func _physics_process(delta):
     var collision_info = move_and_collide(velocity * delta)
+    
     if collision_info:
         if collision_info.collider.is_in_group("projectile"):
-            queue_free()
+            visible = false
         elif collision_info.collider.name == "Player":
-            queue_free()
+            visible = false
         elif collision_info.collider.is_in_group("enemy"):
             collision_info.collider.damage(damage)
-            queue_free()
+            visible = false
         velocity = velocity.bounce(collision_info.normal)
+        $AudioStreamPlayer2D.play(.2)
     update_sprite_rotation()
 
 func _on_LifeTime_timeout():
@@ -40,3 +42,9 @@ func update_sprite_rotation():
         return
     sprite.rotation = velocity.angle()
     collision_shape.rotation = velocity.angle()
+
+
+
+func _on_AudioStreamPlayer2D_finished():
+    if !visible:
+        queue_free()

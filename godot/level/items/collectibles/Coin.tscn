@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://level/items/collectibles/Collectible.tscn" type="PackedScene" id=1]
 [ext_resource path="res://level/0x72_DungeonTilesetII_v1.3.png" type="Texture" id=2]
+[ext_resource path="res://sound/coin.wav" type="AudioStream" id=3]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 2 )
@@ -20,3 +21,6 @@ hframes = 4
 
 [node name="CollisionShape2D" parent="." index="1"]
 shape = SubResource( 2 )
+
+[node name="AudioStreamPlayer" parent="." index="2"]
+stream = ExtResource( 3 )
