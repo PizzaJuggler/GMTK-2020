@@ -9,7 +9,7 @@
 size = 32
 font_data = ExtResource( 1 )
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 resource_name = "hide"
 length = 0.5
 tracks/0/type = "value"
@@ -51,8 +51,7 @@ tracks/2/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "show"
+[sub_resource type="Animation" id=3]
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:modulate")
@@ -147,15 +146,15 @@ size_flags_horizontal = 3
 alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
-margin_top = 78.0
+margin_top = 77.0
 margin_right = 218.0
-margin_bottom = 94.0
+margin_bottom = 95.0
 alignment = 1
 
 [node name="TotalCoinsLabel" type="Label" parent="MarginContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
-margin_left = 47.0
-margin_right = 140.0
-margin_bottom = 16.0
+margin_left = 30.0
+margin_right = 150.0
+margin_bottom = 18.0
 custom_fonts/font = ExtResource( 2 )
 text = "Collected coins"
 __meta__ = {
@@ -163,9 +162,9 @@ __meta__ = {
 }
 
 [node name="TotalCoins" type="Label" parent="MarginContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
-margin_left = 144.0
-margin_right = 170.0
-margin_bottom = 16.0
+margin_left = 154.0
+margin_right = 188.0
+margin_bottom = 18.0
 custom_fonts/font = ExtResource( 2 )
 text = "1000"
 __meta__ = {
@@ -230,7 +229,7 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/hide = SubResource( 3 )
-anims/show = SubResource( 2 )
+anims/hide = SubResource( 2 )
+anims/show = SubResource( 3 )
 [connection signal="pressed" from="MarginContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/CenterContainer/RestartButton" to="." method="_on_RestartButton_pressed"]
 [connection signal="pressed" from="MarginContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/CenterContainer2/QuitButton" to="." method="_on_QuitButton_pressed"]
