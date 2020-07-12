@@ -15,6 +15,7 @@ cell_size = Vector2( 16, 16 )
 format = 1
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
+position = Vector2( -2, 1 )
 
 [node name="WeaponBase" parent="Player" instance=ExtResource( 2 )]
 rotation_limit = 135.0
@@ -23,6 +24,5 @@ firing_rate = 0.2
 damage = 2.0
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-offset = Vector2( 75, 0 )
 rotating = true
 current = true
