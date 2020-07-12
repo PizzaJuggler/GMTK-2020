@@ -34,6 +34,7 @@ func _ready():
     generate()
 
 func generate():
+    rooms_list.clear()
     rng_seed = StatisticsManager.seed_random
     if rng_seed != "":
         rng.seed = rng_seed.hash()
@@ -41,7 +42,7 @@ func generate():
         rng.randomize()
 
     rooms = rng.randi_range(3 + level_num, 5 + level_num)
-    rooms = 5
+
     max_room = level_num * 4 + 12
     grid_size = rooms * max_room 
     
