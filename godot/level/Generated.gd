@@ -180,8 +180,8 @@ func add_items_to_rooms(item_list):
 
 func get_random_coord_in_room(room):
     var coord = {
-        "x" : room.x + randi() % room.dx,
-        "y" : room.y + randi() % room.dy
+        "x" : 1 + room.x + randi() % (room.dx - 2) ,
+        "y" : 1 + room.y + randi() % (room.dy - 2)
        }
     return coord
 
