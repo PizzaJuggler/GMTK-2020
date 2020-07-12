@@ -6,7 +6,7 @@ export var rng_seed : String
 export var level_num : int
 
 var Door = preload("res://level/items/door/Door.tscn")
-var Enemy = preload("res://level/enemies/enemy.tscn")
+var EnemyScene = preload("res://level/enemies/enemy.tscn")
 var Coin = preload("res://level/items/collectibles/Coin.tscn")
 var Potion = preload("res://level/items/collectibles/Potion.tscn")
 
@@ -30,7 +30,7 @@ var rooms_list = []
 
 func _ready():
     collectables = [Coin, Potion]
-    enemies = [Enemy]
+    enemies = [EnemyScene]
     generate()
 
 func generate():
@@ -161,7 +161,7 @@ func add_items_to_rooms(item_list):
     var nr_items = 2
     var item 
     var instance
-    
+    var enemy_angle = 0
     for i in range(1, rooms):
         room = rooms_list[i]
         for j in range(nr_items):
@@ -171,6 +171,9 @@ func add_items_to_rooms(item_list):
             while coord in occupied_cells:
                 coord = get_random_coord_in_room(room)   
             instance.position = tilemap.map_to_world(Vector2(coord.x, coord.y))  
+            if instance is Enemy:
+                instance.angle = enemy_angle
+                enemy_angle += PI / 2
             add_child(instance)
             
 
