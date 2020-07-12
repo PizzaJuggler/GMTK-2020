@@ -62,8 +62,8 @@ func generate():
 
 func create_rooms():
     for _room in range(rooms):
-        var x = rng.randi_range(1, grid_size - max_room)
-        var y = rng.randi_range(1, grid_size - max_room)
+        var x = rng.randi_range(5, grid_size - max_room - 5)
+        var y = rng.randi_range(5, grid_size - max_room - 5)
         var dx = rng.randi_range(min_room, max_room)
         var dy = rng.randi_range(min_room, max_room)
         for a in range(x, x + dx):
@@ -134,7 +134,6 @@ func create_path_between_rooms(a, b):
 
 func add_path_piece(coord, is_horizontal, width):
     for i in range(-width / 2, width / 2 + 1):
-
         if is_horizontal:
             dungeon[coord.x][coord.y + i] = FLOOR
         else:
