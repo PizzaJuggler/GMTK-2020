@@ -167,13 +167,13 @@ points = PoolVector2Array( 0, 16, 0, 0, 4, 0, 4, 12, 16, 12, 16, 16 )
 [sub_resource type="ConvexPolygonShape2D" id=55]
 points = PoolVector2Array( 12, 12, 12, 0, 16, 0, 16, 16, 0, 16, 0, 12 )
 
+[sub_resource type="ConvexPolygonShape2D" id=56]
+points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
+
 [sub_resource type="ConvexPolygonShape2D" id=57]
 points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 
-[sub_resource type="ConvexPolygonShape2D" id=58]
-points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
-
-[sub_resource type="TileSet" id=56]
+[sub_resource type="TileSet" id=58]
 0/name = "0x72_DungeonTilesetII_v1.3.png 0"
 0/texture = ExtResource( 1 )
 0/tex_offset = Vector2( 0, 0 )
@@ -528,13 +528,13 @@ points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 "autotile_coord": Vector2( 2, 15 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 57 ),
+"shape": SubResource( 56 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 }, {
 "autotile_coord": Vector2( 3, 15 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 58 ),
+"shape": SubResource( 57 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 0/z_index = 0
@@ -582,6 +582,7 @@ points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 2/z_index = 0
 
 [node name="DungeonTileMap" type="TileMap"]
-tile_set = SubResource( 56 )
+tile_set = SubResource( 58 )
 cell_size = Vector2( 16, 16 )
 format = 1
+tile_data = PoolIntArray( 0, 0, 65537, 1, 0, 6 )

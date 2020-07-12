@@ -8,8 +8,8 @@ func _ready():
     set_health(StatisticsManager.health)
     set_coins(StatisticsManager.coins)
     
-    StatisticsManager.connect("added_coin", self, "set_coins")
-    StatisticsManager.connect("added_health", self, "set_health")
+    StatisticsManager.connect("coins_changed", self, "set_coins")
+    StatisticsManager.connect("health_changed", self, "set_health")
     
 func set_health(health : float):
     for heart in hearts:   
