@@ -183,32 +183,14 @@ __meta__ = {
 }
 
 [node name="CenterContainer" type="CenterContainer" parent="MarginContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
-margin_top = 49.0
+margin_top = 65.0
 margin_right = 218.0
-margin_bottom = 81.0
-
-[node name="RestartButton" type="TextureButton" parent="MarginContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/CenterContainer"]
-margin_left = 61.0
-margin_right = 157.0
-margin_bottom = 32.0
-size_flags_horizontal = 0
-texture_normal = ExtResource( 4 )
-
-[node name="RestartLabel" type="Label" parent="MarginContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/CenterContainer/RestartButton"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-custom_fonts/font = ExtResource( 2 )
-text = "restart"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
+margin_bottom = 65.0
 
 [node name="CenterContainer2" type="CenterContainer" parent="MarginContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
-margin_top = 91.0
+margin_top = 75.0
 margin_right = 218.0
-margin_bottom = 123.0
+margin_bottom = 107.0
 
 [node name="QuitButton" type="TextureButton" parent="MarginContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/CenterContainer2"]
 margin_left = 61.0
@@ -231,5 +213,4 @@ __meta__ = {
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/hide = SubResource( 2 )
 anims/show = SubResource( 3 )
-[connection signal="pressed" from="MarginContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/CenterContainer/RestartButton" to="." method="_on_RestartButton_pressed"]
 [connection signal="pressed" from="MarginContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/CenterContainer2/QuitButton" to="." method="_on_QuitButton_pressed"]
