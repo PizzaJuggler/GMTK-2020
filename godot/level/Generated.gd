@@ -5,10 +5,11 @@ onready var player = $Player
 export var rng_seed : String
 export var level_num : int
 
-var door = preload("res://level/items/door/Door.tscn")
-var enemy = preload("res://level/enemies/enemy.tscn")
-var coin = preload("res://level/items/collectibles/Coin.tscn")
-var potion = preload("res://level/items/collectibles/Potion.tscn")
+var Door = preload("res://level/items/door/Door.tscn")
+var Enemy = preload("res://level/enemies/enemy.tscn")
+var Coin = preload("res://level/items/collectibles/Coin.tscn")
+var Potion = preload("res://level/items/collectibles/Potion.tscn")
+
 var collectables
 var enemies
 
@@ -28,8 +29,8 @@ var dungeon = {}
 var rooms_list = []
 
 func _ready():
-    collectables = [coin, potion]
-    enemies = [enemy]
+    collectables = [Coin, Potion]
+    enemies = [Enemy]
     generate()
 
 func generate():
@@ -39,8 +40,9 @@ func generate():
         rng.randomize()
 
     rooms = rng.randi_range(3 + level_num, 5 + level_num)
+    rooms = 5
     max_room = level_num * 4 + 12
-    grid_size = rooms * max_room * 2
+    grid_size = rooms * max_room 
     
     
     for x in range(grid_size):
@@ -49,10 +51,12 @@ func generate():
             dungeon[x][y] = Vector2.ZERO
 
     create_rooms()
-    add_items_to_rooms(collectables)
-    add_items_to_rooms(enemies)
+    
     connect_rooms()
     add_walls()
+    add_door()
+    add_items_to_rooms(collectables)
+    add_items_to_rooms(enemies)
     populate_tilemap()
     place_player_in_room()
 
@@ -109,7 +113,7 @@ func do_rooms_overlap(a, b):
     
 func create_path_between_rooms(a, b):
     var coord = {}
-    coord = {"x": clamp(b.x + b.dx / 2, a.x - 1, a.x + a.dx + 1), "y": a.y + a.dy / 2}
+    coord = {"x": clamp(b.x + b.dx / 2, a.x - 1, a.x + a.dx), "y": a.y + a.dy / 2}
     var dx
     var signed_distance =  b.x - coord.x
     if signed_distance > 0:
@@ -178,3 +182,14 @@ func get_random_coord_in_room(room):
         "y" : room.y + randi() % room.dy
        }
     return coord
+
+func add_door():
+    var last_room = rooms_list[-1]
+    var door = Door.instance()
+    var center_x = last_room.x + last_room.dx / 2
+    door.position = tilemap.map_to_world(Vector2(center_x, last_room.y - 1))
+    add_child(door)
+    # remove walls behind door
+    dungeon[center_x - 1][last_room.y - 1] = Vector2.ZERO
+    dungeon[center_x][last_room.y - 1] = Vector2.ZERO
+    
