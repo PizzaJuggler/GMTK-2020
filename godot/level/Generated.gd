@@ -173,8 +173,9 @@ func add_items_to_rooms(item_list):
                 coord = get_random_coord_in_room(room)   
             instance.position = tilemap.map_to_world(Vector2(coord.x, coord.y))  
             if "angle" in instance:
-                instance.angle = enemy_angle
-                enemy_angle += PI / 2
+                instance.angle = randf() * PI * 2.0
+                instance.speed = 20.0 + level_num * randf() * 2.0
+                
             tilemap.add_child(instance)
             
 

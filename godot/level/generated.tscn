@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://level/DungeonTileSet.tres" type="TileSet" id=1]
 [ext_resource path="res://level/weapons/WeaponBase.tscn" type="PackedScene" id=2]
@@ -6,10 +6,10 @@
 [ext_resource path="res://level/Generated.gd" type="Script" id=4]
 [ext_resource path="res://gui/HUD/HUD.tscn" type="PackedScene" id=5]
 [ext_resource path="res://gui/gameOverScreen/GameOverScreen.tscn" type="PackedScene" id=6]
-[ext_resource path="res://level/Camera.gd" type="Script" id=7]
 
 [node name="Generated" type="Node2D"]
 script = ExtResource( 4 )
+rng_seed = "chewbacca"
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource( 1 )
@@ -28,10 +28,6 @@ damage = 2.0
 [node name="Camera2D" type="Camera2D" parent="Player"]
 rotating = true
 current = true
-smoothing_enabled = true
-smoothing_speed = 3.0
-offset_h = -1.0
-script = ExtResource( 7 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
