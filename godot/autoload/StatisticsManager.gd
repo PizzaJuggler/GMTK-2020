@@ -8,7 +8,7 @@ onready var hud = find_node("HUD")
 
 var max_health = 5.0
 
-var health = 2.0 
+var health = 5.0 
 var coins = 0
 
 func _ready():

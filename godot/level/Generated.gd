@@ -171,13 +171,11 @@ func add_items_to_rooms(item_list):
             while coord in occupied_cells:
                 coord = get_random_coord_in_room(room)   
             instance.position = tilemap.map_to_world(Vector2(coord.x, coord.y))  
-            if instance is Enemy:
+            if "angle" in instance:
                 instance.angle = enemy_angle
                 enemy_angle += PI / 2
-            add_child(instance)
+            tilemap.add_child(instance)
             
-
-
 
 func get_random_coord_in_room(room):
     var coord = {
@@ -191,8 +189,16 @@ func add_door():
     var door = Door.instance()
     var center_x = last_room.x + last_room.dx / 2
     door.position = tilemap.map_to_world(Vector2(center_x, last_room.y - 1))
-    add_child(door)
+    tilemap.add_child(door)
     # remove walls behind door
     dungeon[center_x - 1][last_room.y - 1] = Vector2.ZERO
     dungeon[center_x][last_room.y - 1] = Vector2.ZERO
-    
+    door.connect("door_opened", self, "on_door_opened")
+
+func on_door_opened():
+    level_num += 1
+    var level_items = tilemap.get_children()
+    for item in level_items:
+        item.queue_free()
+    tilemap.clear()
+    generate()
