@@ -4,7 +4,7 @@
 [ext_resource path="res://level/player/Player.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 5.03959, 8.36259 )
+extents = Vector2( 4.80485, 5.87986 )
 
 [sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 1 )
