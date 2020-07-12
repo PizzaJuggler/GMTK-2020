@@ -16,6 +16,8 @@ const WALL = Vector2(2, 1)
 const FLOOR = Vector2(1, 4)
 # tilemap.set_cell(x, y, 0, false, false, false, Vector2(x, y))
 
+var dungeon = {}
+
 func _ready():
     if rng_seed != "":
         rng.seed = rng_seed.hash()
@@ -26,12 +28,19 @@ func _ready():
     max_room = level_num * 4 + 12
     grid_size = rooms * max_room
     
-    var dungeon = {}
+    
     for x in range(grid_size):
         dungeon[x] = {}
         for y in range(grid_size):
             dungeon[x][y] = Vector2.ZERO
 
+    var rooms_list = create_rooms()
+
+    add_walls()
+    populate_tilemap()
+    
+
+func create_rooms():
     var rooms_list = []
     for _room in range(rooms):
         var x = rng.randi_range(0, grid_size - max_room)
@@ -47,7 +56,9 @@ func _ready():
             "dx": dx,
             "dy": dy
         })
-
+    return rooms_list
+    
+func add_walls():
     for x in range(grid_size):
         for y in range(grid_size):
             if dungeon[x][y] == FLOOR:
@@ -60,6 +71,7 @@ func _ready():
                 if dungeon[x - 1][y] != FLOOR:
                     dungeon[x - 1][y] = WALL
 
+func populate_tilemap():
     for x in range(grid_size):
         for y in range(grid_size):
             tilemap.set_cell(x, y, 0, false, false, false, dungeon[x][y])
