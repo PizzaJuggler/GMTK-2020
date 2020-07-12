@@ -53,11 +53,13 @@ func _physics_process(delta):
 func handle_collision(collision_info):
     if collision_info == null:
         return
-    if collision_info.collider is TileMap:
+
+        
+    if collision_info.collider is Enemy:
+        collide_with_enemy(collision_info.collider)
+    else: 
         velocity = velocity.bounce(collision_info.normal)
         init_velocity *= -1
-    elif collision_info.collider is Enemy:
-        collide_with_enemy(collision_info.collider)
     
     update_rotation()
         
